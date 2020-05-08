@@ -17,9 +17,8 @@ FSJS project 2 - List Filter and Pagination
    scoped to that function.
 ***/
 const listItem = document.getElementsByClassName('student-item cf');
-const listNum = 10;
+const pageMax = 10;
 
-console.log(listItem);
 
 
 /*** 
@@ -36,6 +35,18 @@ console.log(listItem);
        that will be passed into the parens later when you call or 
        "invoke" the function 
 ***/
+function showPage(list, page) {
+   const startIndex = (page * pageMax) - pageMax;
+   const endIndex = (page * pageMax) - 1;
+      for (let i = 0; i < list.length; i++)
+         if ( i >= startIndex && i <= endIndex) {
+         list[i].style.display = '';  
+         } else {
+            list[i].style.display = 'none';
+         }
+};
+
+
 
 
 
@@ -45,6 +56,48 @@ console.log(listItem);
    functionality to the pagination buttons.
 ***/
 
+/***  There are three sections to this function. 
+1. generate required DOM elements
+2. append appropriate elements to their respective parent elements
+3. add click even listener functionality to each li (page) element.active
+***/
+
+/*
+1. Determine how many pages are needed for the list by dividing the
+total number of list items by the max number of items per page
+2. Create a div, give it the “pagination” class, and append it to the .page div
+3. Add a ul to the “pagination” div to store the pagination links
+4. for every page, add li and a tags with the page number text
+5. Add an event listener to each a tag. When they are clicked
+call the showPage function to display the appropriate page
+6. Loop over pagination links to remove active class from all links
+7. Add the active class to the link that was just clicked. You can identify that
+clicked link using event.target
+*/
+
+
+
+function appendPageLinks (list) {
+   let pageNum = list.length / pageMax;
+   let div = document.createElement("div");
+   let ul = document.createElement("ul");
+   let li = document.createElement('li');
+   let a= document.createElement('a');
+
+   div.page.appendChild('div');
+   div.appendChild('ul');
+
+   for (let n=1; n<(pageNum); n++) {
+      // let pNumber = document.createTextNode(`${n}`);
+      ul.appendChild('li')
+      li.appendChild('a');
+      a + "href= #" 
+      a.document.createTextNode(n);
+   }
+
+}
+
+appendPageLinks(listItem);
 
 
 
