@@ -16,7 +16,6 @@ function showPage(list, page) {
 };
 
 
-
 function appendPageLinks (list) { 
    let pageNum = Math.ceil(list.length / pageMax) //calculates the amount of pages that will be added based on the amount of list items divided by 10 and rounded up.
    let page = document.querySelector('.page'); //calls out the div element with the class name .page
